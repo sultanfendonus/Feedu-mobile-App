@@ -15,7 +15,7 @@ const ItemList = () => {
 
             <View style={{padding: 10, marginRight: 5, flex:1}}>
                 <Text style={GlobalStyle.title}>Facebook Social Apps</Text>
-                <Text numberOfLines={3} style={{marginBottom: 5}}>Facebook is a jook pook  Social Platform which is not only a big Platform but also an awesome platform bjbj.</Text>
+                <Text numberOfLines={2} style={{marginBottom: 5}}>Facebook is a jook pook  Social Platform which is not only a big Platform but also an awesome platform bjbj.</Text>
                 <View style={{flexDirection: "row"}}>
                     <AntDesign style={{color: 'gold', marginRight: 3}} name ='star' size = {20} />
                     <Text style={{marginRight: 7}}>4.2</Text>
@@ -36,8 +36,8 @@ const styles = StyleSheet.create({
         
     },
     image:{
-        height: 120,
-        width: 120,
+        height: 110,
+        width: 110,
         borderRadius: 5,
     }
 })

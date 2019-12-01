@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text, Image, StyleSheet, ScrollView, KeyboardAvoidingView } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView, KeyboardAvoidingView, Platform } from 'react-native'
 import TextFieldSignIn from '../components/TextFieldSignIn'
 import { colors } from '../../String'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         alignItems: "center"
     },
     headerImage: {
-        height: 300,
+        height: Platform.OS === 'ios'? 260:320,
         width: 360
     },
     title: {

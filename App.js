@@ -13,17 +13,17 @@ import { setNavigator } from './src/navigationRef';
 import AddNewItemScreen from './src/screen/AddNewItemScreen';
 
 const switchNavigator = createSwitchNavigator({
-  mainFlow: createStackNavigator({
-    AddItem: AddNewItemScreen,
-    Home : HomeScreen,
-    
-    Cart : CartScreen,
-    Account : AccountScreen
-  }),
   loginFlow: createStackNavigator({
     SignIn : SignIn,
     SignUp : SignUp
+  }),
+  mainFlow: createStackNavigator({
+    Home : HomeScreen,
+    AddItem: AddNewItemScreen,
+    Cart : CartScreen,
+    Account : AccountScreen
   })
+  
 });
 
 const App = createAppContainer(switchNavigator);
