@@ -12,14 +12,14 @@ import { Provider as AuthProvider } from './src/context/AuthContext';
 import { setNavigator } from './src/navigationRef';
 
 const switchNavigator = createSwitchNavigator({
-  loginFlow: createStackNavigator({
-    SignIn : SignIn,
-    SignUp : SignUp
-  }),
-  mainFlow: createBottomTabNavigator({
+  mainFlow: createStackNavigator({
     Home : HomeScreen,
     Cart : CartScreen,
     Account : AccountScreen
+  }),
+  loginFlow: createStackNavigator({
+    SignIn : SignIn,
+    SignUp : SignUp
   })
 });
 

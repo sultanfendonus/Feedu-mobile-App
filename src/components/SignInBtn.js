@@ -2,9 +2,9 @@ import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import { colors } from '../../String'
 
-const SignInBtn = () => {
+const SignInBtn = ({navigation}) => {
     return (
-        <TouchableOpacity style={styles.btnStyle}>
+        <TouchableOpacity onPress={()=>{navigation.navigate('Home')}} style={styles.btnStyle}>
             <Text style= {styles.btnText}>Sign In</Text>
         </TouchableOpacity>
     )

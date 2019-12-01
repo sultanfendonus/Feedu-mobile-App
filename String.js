@@ -6,3 +6,7 @@ export const colors = {
     facebookbtnColor: '#3B5998',
     googleBtnColor: '#DD4B39'
 }
+
+export const appString = {
+    appName: 'Feedu'
+}

@@ -9,7 +9,7 @@ import FacebookSocialBtn from '../components/FacebookSocialBtn'
 import GoogleSocialBtn from '../components/GoogleSocialBtn'
 
 
-const SignIn = () => {
+const SignIn = ({navigation}) => {
     return (
         <KeyboardAwareScrollView contentContainerStyle={styles.mainContainer}>
             
@@ -20,7 +20,7 @@ const SignIn = () => {
                 <TextFieldSignIn />
 
                 <Space height="30" />
-                <SignInBtn />
+                <SignInBtn navigation={navigation} />
                 <Space height="10" />
                 <Text style={{color: colors.loginTitleColor, fontWeight: "bold"}}>Don't have an account ? Sign UP</Text>
 
