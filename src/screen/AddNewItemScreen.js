@@ -3,9 +3,26 @@ import { View, Text, StyleSheet, TextInput, Image, Picker } from 'react-native'
 import GlobalStyle from '../../GlobalStyle'
 import Space from '../components/Space'
 import ItemSaveBtn from '../components/dashboard/ItemSaveBtn'
+import { Dropdown } from 'react-native-material-dropdown';
 
 const AddNewItemScreen = () => {
     const [language, setLanguage] = useState('');
+
+    let data = [{
+        value: 'Banana',
+        id: 1
+      }, {
+        value: 'Mango',
+        id: 2
+      }, {
+        value: 'Pear',
+        id: 3
+      }];
+
+      const getItem = (value)=>{
+           console.log(value)
+      }
+
     return (
         <View style={styles.container}>
             <Text style={GlobalStyle.title}>Item Title: </Text>
@@ -37,15 +54,12 @@ const AddNewItemScreen = () => {
                 <Text style={GlobalStyle.title}>Choose Category: </Text>
                 <Space height="15" />
 
-                <Picker
-                    selectedValue={language}
-                    style={{height: 50, width: 200, borderWidth:1, borderColor:"black"}}
-                    onValueChange={(itemValue, itemIndex) =>
-                        setLanguage(itemValue)
-                    }>
-                    <Picker.Item label="Java" value="java" />
-                    <Picker.Item label="JavaScript" value="js" />
-                    </Picker>
+               <Dropdown
+                    label='Select A Category'
+                    data={data}
+                    onChangeText = {(value,index,data)=>console.log(data[index].id)}
+                    
+                />
 
         </View>
     )
