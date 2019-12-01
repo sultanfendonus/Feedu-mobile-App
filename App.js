@@ -10,10 +10,13 @@ import CartScreen from './src/screen/CartScreen';
 import AccountScreen from './src/screen/AccountScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { setNavigator } from './src/navigationRef';
+import AddNewItemScreen from './src/screen/AddNewItemScreen';
 
 const switchNavigator = createSwitchNavigator({
   mainFlow: createStackNavigator({
+    AddItem: AddNewItemScreen,
     Home : HomeScreen,
+    
     Cart : CartScreen,
     Account : AccountScreen
   }),

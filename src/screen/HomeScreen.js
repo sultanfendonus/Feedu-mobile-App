@@ -7,11 +7,11 @@ import CategoryLIst from '../components/dashboard/CategoryLIst'
 import Space from '../components/Space'
 import TrendingItem from '../components/dashboard/TrendingItem'
 
-const HomeScreen = () => {
+const HomeScreen = ({navigation}) => {
     return (
         <SafeAreaView style={GlobalStyle.droidSafeArea}>
             <View style={{paddingLeft: 5, paddingRight: 5, flex: 1}}>
-                <DashBoardHeader />
+                <DashBoardHeader navigation={navigation} />
                 <SearchBar />
                 <ScrollView >
                     <View>

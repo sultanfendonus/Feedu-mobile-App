@@ -1,10 +1,10 @@
 import React from 'react'
-import { View, Text , StyleSheet, Image} from 'react-native'
+import { View, Text , StyleSheet, Image, TouchableOpacity} from 'react-native'
 import { appString } from '../../../String'
 import {Entypo, MaterialIcons} from '@expo/vector-icons'
 import Space from '../Space'
 
-const DashBoardHeader = () => {
+const DashBoardHeader = ({navigation}) => {
     return (
         <View style={styles.container}>
             <View style={{flexDirection: "row", alignItems: "center"}}>
@@ -14,7 +14,9 @@ const DashBoardHeader = () => {
             <View style={{flexDirection: "row", alignItems: "center"}}>
                 <Entypo style={{}} name ='camera' size = {35} />
                 <Space width= "5" />
-                <MaterialIcons style={{}} name ='add-circle-outline' size = {45} />
+                <TouchableOpacity onPress={()=>{navigation.navigate('AddItem')}}>
+                    <MaterialIcons style={{}} name ='add-circle-outline' size = {45} />
+                </TouchableOpacity>
             </View>
             
         </View>
