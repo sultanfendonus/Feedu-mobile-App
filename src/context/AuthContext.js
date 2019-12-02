@@ -22,13 +22,12 @@ const socialSignIn = dispatch => async (LoginObj) => {
   try {
     const avaterUrl = LoginObj.picture.data.url
     const response = await MainApi.post('/user/social-login', { email:LoginObj.email, password: LoginObj.id, firstName: LoginObj.first_name, lastName: LoginObj.last_name, avaterUrl: avaterUrl });
-    
-    console.log(response.data.token)
+    const jwtToken = `Bearer ${response.data.token}`
 
-      dispatch({ type: 'sign_in', payload: {token : response.data.token,email : response.data.email} });
-      await SecureStore.setItemAsync('token', response.data.token.toString());
-      await SecureStore.setItemAsync('email',response.data.email);
-      navigate('mainFlow');
+    dispatch({ type: 'sign_in', payload: {token : response.data.token,email : response.data.email} });
+    await SecureStore.setItemAsync('token', jwtToken );
+    await SecureStore.setItemAsync('email',response.data.user.email);
+    navigate('mainFlow');
     
     
   } catch (err) {
@@ -40,8 +39,26 @@ const socialSignIn = dispatch => async (LoginObj) => {
   }
 };
 
+const autoLogin = dispatch => async () => {
+  
+try {
+  const token = await SecureStore.getItemAsync('token');
+  const email = await SecureStore.getItemAsync('email');
+
+  if(token && email){
+    navigate('mainFlow')
+  }else{
+    navigate('loginFlow')
+  }
+
+} catch (err) {
+  navigate('loginFlow')
+
+}
+};
+
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { socialSignIn },
+  { socialSignIn, autoLogin },
   { token: null, email: null, errorMessage: '' }
 );

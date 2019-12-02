@@ -11,8 +11,10 @@ import AccountScreen from './src/screen/AccountScreen';
 import { Provider as AuthProvider } from './src/context/AuthContext';
 import { setNavigator } from './src/navigationRef';
 import AddNewItemScreen from './src/screen/AddNewItemScreen';
+import AutoLogin from './src/screen/AutoLogin';
 
 const switchNavigator = createSwitchNavigator({
+  autoLogin: AutoLogin,
   loginFlow: createStackNavigator({
     SignIn : SignIn,
     SignUp : SignUp
