@@ -1,56 +1,70 @@
-import React from 'react'
+import React,{useEffect, useState} from 'react'
 import { View, Text, FlatList } from 'react-native'
 import CategoryItem from './CategoryItem';
 import ItemList from './ItemList';
+import MainApi from '../../api/MainApi';
+import SearchBar from './SearchBar';
+import Space from '../Space';
+import GlobalStyle from '../../../GlobalStyle';
+import CategoryLIst from './CategoryLIst';
 
 const TrendingItem = () => {
-    const DATA = [
-        {
-          id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-          title: 'First',
-        },
-        {
-          id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-          title: 'Second',
-        },
-        {
-          id: '58694a0f-471f-bd96-145571e29d72',
-          title: 'Third',
-        },
-        {
-            id: 'bd7acbea-c16c2-aed5-3ad53abb28ba',
-            title: 'First',
-          },
-          {
-            id: '3ac68afc-c6058d3-a4f8-fbd91aa97f63',
-            title: 'Second',
-          },
-          {
-            id: '58694a0f-3a1-471f-bd96-145571e29d72',
-            title: 'Third',
-          },
-          {
-            id: 'bd7acbea-c1b-46c2-aed5-3ad53abb28ba',
-            title: 'First',
-          },
-          {
-            id: '3ac68afc-c605-48d3-4f8-fbd91aa97f63',
-            title: 'Second',
-          },
-          {
-            id: '58694a0f-3da1-471f-bd96-14571e29d72',
-            title: 'Third',
-          },
-      ];
+    
+  const [page, setPage] = useState(1);
+  const [data , setData] = useState([]);
+  const [pageCount, setPageCount] = useState(1);
+
+
+  useEffect(()=>{
+    getData();
+  },[])
+
+  //Need to refactor and put this on context 
+  const getData = async ()=>{
+    const response = await MainApi.get('/item?p='+page)
+    console.log(page);
+    setPageCount(response.data.pageCount)
+    setData(data.concat(response.data.items));
+    setPage(page+1)
+  }
+
+    const handleLoadMore = async ()=>{
+      
+      if(pageCount >= page){
+        getData()
+      }      
+      
+    }
+
+    const headerFile = ()=>{
+      return(
+        <View>
+          <SearchBar />               
+          <Space height="10" />
+          <Text style={GlobalStyle.title}>Categories: </Text>
+
+          <CategoryLIst /> 
+          <Space height="5" />
+          <Text style={GlobalStyle.title}>Trending Items: </Text>
+
+
+        </View>
+
+      )
+      
+    }
 
     return (
-        <View>
+        
             <FlatList
-                data={DATA}
-                renderItem={({ item }) => <ItemList title={item.title} />}
-                keyExtractor={item => item.id}
+                data={data}
+                renderItem={({ item }) => <ItemList item = {item} />}
+                keyExtractor={item => item._id}
+                onEndReached={()=>handleLoadMore()}
+                onEndReachedThreshold={0.5}
+                ListHeaderComponent={headerFile()}
             />
-        </View>
+        
     )
 }
 

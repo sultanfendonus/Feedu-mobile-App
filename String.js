@@ -8,5 +8,6 @@ export const colors = {
 }
 
 export const appString = {
-    appName: 'Feedu'
+    appName: 'Feedu',
+    baseURL : 'http://192.168.31.35:3050/',
 }

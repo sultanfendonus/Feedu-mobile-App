@@ -1,11 +1,15 @@
 import React from 'react'
 import { View, Text ,Image, Platform, StyleSheet} from 'react-native'
+import { appString } from '../../../String'
 
-const CategoryItem = ({title}) => {
+const CategoryItem = ({category}) => {
+    //console.log(category)
     return (
         <View style={{marginRight: 5, alignItems:"center", }}>
-            <Image style={styles.image} source={require('../../../assets/profile.jpg')} />
-            <Text style={{fontWeight:"bold"}}>{title}</Text>
+         <Image style={styles.image} source={{uri: 
+            `${appString.baseURL}${category.thumbnail}`
+            }}/> 
+        <Text style={{fontWeight:"bold"}}>{category.name}</Text>
         </View>
     )
 }

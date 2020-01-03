@@ -40,21 +40,20 @@ const socialSignIn = dispatch => async (LoginObj) => {
 };
 
 const autoLogin = dispatch => async () => {
-  
 try {
-  const token = await SecureStore.getItemAsync('token');
-  const email = await SecureStore.getItemAsync('email');
+    const token = await SecureStore.getItemAsync('token');
+    const email = await SecureStore.getItemAsync('email');
 
-  if(token && email){
-    navigate('mainFlow')
-  }else{
+    if(token && email){
+      navigate('mainFlow')
+    }else{
+      navigate('loginFlow')
+    }
+
+  } catch (err) {
     navigate('loginFlow')
+
   }
-
-} catch (err) {
-  navigate('loginFlow')
-
-}
 };
 
 export const { Provider, Context } = createDataContext(

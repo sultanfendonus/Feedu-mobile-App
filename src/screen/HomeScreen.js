@@ -12,21 +12,15 @@ const HomeScreen = ({navigation}) => {
         <SafeAreaView style={GlobalStyle.droidSafeArea}>
             <View style={{paddingLeft: 5, paddingRight: 5, flex: 1}}>
                 <DashBoardHeader navigation={navigation} />
-                <SearchBar />
-                <ScrollView >
-                    <View>
-                        <Space height="10" />
-                        <Text style={GlobalStyle.title}>Categories: </Text>
 
-                        <CategoryLIst />
-                        <Space height="5" />
-                        <Text style={GlobalStyle.title}>Trending Items: </Text>
-                        <TrendingItem />
+                
+                <TrendingItem />
 
-                    </View>
+                
+
+                    
                     
 
-                </ScrollView>
                 
             </View>
             
